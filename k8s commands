@@ -1,0 +1,32 @@
+minikube config set driver docker  == tells minikube to use docker
+minikube start == starts a local Kubernetes cluster
+minikube status == get the status of a local Kubernetes cluster
+minikube delete == deletes a local Kubernetes cluster
+minikube stop == stops a running local Kubernetes cluster
+minikube dashboard (param --url) == Access The Kubernetes dashboard running withing the minikube
+kubectl config view == to see the kubecontrol config file
+kubectl cluster-info == give us information about our kubernetes cluster
+kubectl get nodes = get the nodes running in kubernetes cluster
+kubectl describe node minikube == get information about a specific node
+kubectl cordon minikube ==  take down kubernetes cluster
+kubectl uncordon minikube == bring the cluster online
+kubectl get namespaces  == get the namespaces (virtual clusters/separated envs) inside a cluster
+kubectl create namespace prod == create a new namespace
+kubectl delete namespace prod == delete a namespace
+kubectl create -f .\namespace-prod.yaml == create a name space from a file
+kubectl describe namespace prod == get namespace info  
+kubectl get pods (-n dev)  == get pods in the namespace
+set the current namespace == kubectl config set-context --current --namespace=<NAMESPACE NAME>
+create a hello world deployement == kubectl create deployment hello-node --image=k8s.gcr.io/echoserver:1.4 (-n dev)
+kubectl get pods --all-namespaces == get all pods running in all namespaces
+kubectl get events -n dev == get a history of events that happened inside the kubernetes cluster
+kubectl expose deployment hello-node --type=LoadBalancer --port=8080 -n dev == to access the application from outside you need a service infront of the pod,
+ so you can access the service and the service can load balance connections to the containers in this pod (we need forward connection to this load balancer 
+ but you dont do this on aws since you'll be aws elastic LoadBalancer)
+kubectl get services -n dev = get all the services in dev namespace
+kubectl get deployments == get deployements
+kubectl get replicasets == get replicasets
+kubectl apply -f v1.yaml == create a deployement from a file
+kubectl delete -f v1.yaml == delete a deployement frome a file
+kubectl logs -f -l app=mywebapp == logs for the pods
+kubectl rollout restart deployement mydeployment == restart all the pods for mydeployment
